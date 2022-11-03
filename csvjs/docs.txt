@@ -1,0 +1,22 @@
+The File System to be Operated on is read into the program using Node's inbuilt File System and Path Module
+File System Creates A read Stream, splitting data into chunks
+The chunks are piped to the csv-parse module
+The parsed csv data is converted to JSON by the Jsonize function
+In the Jsonize, the JSON file for each nft is built using the CHIP-0007 format
+The hash of the JSON file is generated using sha256 standard
+The generated hash is appended to the CSV File loaded
+Input npm run start in terminal to see the script in demo
+
+Basic Flow is:
+Read CSV from Local Directory
+JSON File Is Generated per NFT entry in the CSV
+Each JSON File is Hashed using sha256 standard
+The sha256 hash is appended to the csv file.
+
+modules used include
+File System - To read and write from file, Create JSON File too.
+Path - to provide absolute file path
+Crypto - to get the file hash
+CSV-Parse - to parse csv files into javascript objects
+json2csv - to parse JSON into CSV documents
+CHIP-0007 - to generate NFT JSON File in strict compliance 
