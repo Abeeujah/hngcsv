@@ -7,6 +7,11 @@ The hash of the JSON file is generated using sha256 standard
 The generated hash is appended to the CSV File loaded
 Input npm run start in terminal to see the script in demo
 
+specify input file name in the {fileName} variable
+specify output path in the {pathName} variable
+specify output file name in the {newFile} variable
+you can choose to overwrite your former file by passing fileName to newFile
+
 Basic Flow is:
 Read CSV from Local Directory
 JSON File Is Generated per NFT entry in the CSV

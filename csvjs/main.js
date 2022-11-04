@@ -8,6 +8,9 @@ const jsonTemplate = require('./json_template.json');
 
 // Store Hashed NFTs in an Array..
 const hashedArray = [];
+const fileName = 'nok'
+const pathName = './test';
+const newFile = 'nalo';
 
 // Instantiate JSON To CSV Parser..
 const parserObj = new Parser();
@@ -15,7 +18,7 @@ const parserObj = new Parser();
 // Read From CSV..
 function alpha() {
     new Promise((resolve, reject) => {
-        fs.createReadStream(path.join(__dirname, 'nok.csv'))
+        fs.createReadStream(path.join(__dirname, `${fileName}.csv`))
             .pipe(parse({
                 comment: '#',
                 columns: true,
@@ -31,7 +34,7 @@ function alpha() {
             .on('end', () => {
                 console.log('Operation ended');
                 const result = parserObj.parse(hashedArray);
-                fs.writeFileSync('nalo.csv', result);
+                fs.writeFileSync(`${newFile}.csv`, result);
                 resolve();
             });
     });
@@ -50,14 +53,14 @@ function turnJson(data) {
         jsonTemplate.collection.id = data.UUID;
         jsonTemplate.collection.attributes = data.Attributes;
         console.log(jsonTemplate);
-        const exists = fs.existsSync('./test');
+        const exists = fs.existsSync(`./${pathName}`);
         if (exists === true) {
 
         } else {
-            fs.mkdirSync('./test');
+            fs.mkdirSync(`./${pathName}`);
         }
         const lau = JSON.stringify(jsonTemplate, null, 3);
-        const absName = `test/${data.Filename}.json`;
+        const absName = `${pathName}/${data.Filename}.json`;
         fs.writeFileSync(absName, lau);
         const hashed = hashJson(absName);
         data.hash = hashed;
